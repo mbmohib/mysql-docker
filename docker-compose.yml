@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mysql:9.0.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    restart: unless-stopped
+    volumes:
+      - bayan-db:/var/lib/mysql
+    networks:
+      - bayan_net
+    ports:
+      - "${MYSQL_PORT}:3306"
+
+volumes:
+  bayan-db:
+
+
+networks:
+  bayan_net:
+    external: true
